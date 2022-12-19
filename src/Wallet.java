@@ -14,7 +14,10 @@ public class Wallet {
             ECGenParameterSpec ecSpec=new ECGenParameterSpec("prime192v1");
             keyGen.initialize(ecSpec,random);
             KeyPair keyPair=keyGen.generateKeyPair();
-
+            privateKey=keyPair.getPrivate();
+            publicKey=keyPair.getPublic();
+        }catch (Exception e){
+            throw new RuntimeException(e);
         }
     }
 }
