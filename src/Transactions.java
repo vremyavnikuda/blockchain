@@ -31,6 +31,11 @@ public class Transactions {
     }
 
     public void generateSingnature(PrivateKey privateKey){
-
+        String data=StringUtil.getStringFromKey(sender)+StringUtil.getStringFromKey(reciepient)+Float.toString(value);
+        signature=StringUtil.applyECDSASig(privateKey,data);
+    }
+    public boolean verifiySignature(){
+        String data =StringUtil.getStringFromKey(sender)+StringUtil.getStringFromKey(reciepient)+Float.toString(value);
+        return StringUtil.verifyECDSASing(sender,data,signature);
     }
 }
