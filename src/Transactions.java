@@ -30,12 +30,14 @@ public class Transactions {
                         );
     }
 
-    public void generateSingnature(PrivateKey privateKey){
-        String data=StringUtil.getStringFromKey(sender)+StringUtil.getStringFromKey(reciepient)+Float.toString(value);
-        signature=StringUtil.applyECDSASig(privateKey,data);
+    //Signs all the data we don't wish to be tampered with.
+    public void generateSignature(PrivateKey privateKey) {
+        String data = StringUtil.getStringFromKey(sender) + StringUtil.getStringFromKey(reciepient) + Float.toString(value)	;
+        signature = StringUtil.applyECDSASig(privateKey,data);
     }
-    public boolean verifiySignature(){
-        String data =StringUtil.getStringFromKey(sender)+StringUtil.getStringFromKey(reciepient)+Float.toString(value);
-        return StringUtil.verifyECDSASing(sender,data,signature);
+    //Verifies the data we signed haunts been tampered with
+    public boolean verifiySignature() {
+        String data = StringUtil.getStringFromKey(sender) + StringUtil.getStringFromKey(reciepient) + Float.toString(value)	;
+        return StringUtil.verifyECDSASig(sender, data, signature);
     }
 }
