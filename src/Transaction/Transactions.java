@@ -1,3 +1,6 @@
+package Transaction;
+
+
 import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.util.ArrayList;
@@ -23,21 +26,21 @@ public class Transactions {
 
     public String calulateHash(){
         sequence++;
-        return StringUtil.applySha256(
-            StringUtil.getStringFromKey(sender) +
-                        StringUtil.getStringFromKey(reciepient) +
+        return Transaction.StringUtil.applySha256(
+            Transaction.StringUtil.getStringFromKey(sender) +
+                        Transaction.StringUtil.getStringFromKey(reciepient) +
                         Float.toString(value) + sequence
                         );
     }
 
     //Signs all the data we don't wish to be tampered with.
     public void generateSignature(PrivateKey privateKey) {
-        String data = StringUtil.getStringFromKey(sender) + StringUtil.getStringFromKey(reciepient) + Float.toString(value)	;
-        signature = StringUtil.applyECDSASig(privateKey,data);
+        String data = Transaction.StringUtil.getStringFromKey(sender) + Transaction.StringUtil.getStringFromKey(reciepient) + Float.toString(value)	;
+        signature = Transaction.StringUtil.applyECDSASig(privateKey,data);
     }
     //Verifies the data we signed haunts been tampered with
     public boolean verifiySignature() {
-        String data = StringUtil.getStringFromKey(sender) + StringUtil.getStringFromKey(reciepient) + Float.toString(value)	;
-        return StringUtil.verifyECDSASig(sender, data, signature);
+        String data = Transaction.StringUtil.getStringFromKey(sender) + Transaction.StringUtil.getStringFromKey(reciepient) + Float.toString(value)	;
+        return Transaction.StringUtil.verifyECDSASig(sender, data, signature);
     }
 }

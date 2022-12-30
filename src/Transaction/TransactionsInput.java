@@ -1,3 +1,5 @@
+package Transaction;
+
 public class TransactionsInput {
     public String transactionOutputId;
     public TransactionsInput UTXO;

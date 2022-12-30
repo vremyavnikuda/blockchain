@@ -1,3 +1,5 @@
+package Transaction;
+
 import java.security.PublicKey;
 
 public class TransactionsOutput {
