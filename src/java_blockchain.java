@@ -1,3 +1,6 @@
+import Transaction.StringUtil;
+import Transaction.Transactions;
+
 import java.security.Security;
 import java.util.ArrayList;
 
@@ -18,7 +21,7 @@ public class java_blockchain {
         //Test public and private keys
         System.out.println("Private and public keys:");
         System.out.println(StringUtil.getStringFromKey(walletA.privateKey));
-        System.out.println(StringUtil.getStringFromKey(walletA.publicKey));
+        System.out.println(StringUtil.getStringFromKey(walletB.publicKey));
         //Create a test transaction from WalletA to walletB
         Transactions transaction = new Transactions(walletA.publicKey, walletB.publicKey, 5, null);
         transaction.generateSignature(walletA.privateKey);
