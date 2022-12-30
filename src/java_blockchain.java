@@ -1,12 +1,15 @@
 import Transaction.StringUtil;
 import Transaction.Transactions;
+import Transaction.TransactionsOutput;
 
 import java.security.Security;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class java_blockchain {
 
     public static ArrayList<Block> blockchain = new ArrayList<Block>();
+    public static HashMap<String, TransactionsOutput> UTXOs=new HashMap<String,TransactionsOutput>();
     public static int difficulty = 5;
     public static  Wallet walletA;
     public static  Wallet walletB;
